@@ -8,14 +8,13 @@ import math
 #Import Euler integrator for solving ODE system of chemical species inside the cells
 from CellModeller.Integration.CLEulerIntegrator import CLEulerIntegrator
 
-max_cells = 150000
+max_cells = 100000
 
 
 def setup(sim):
     # Set biophysics, signalling, and regulation models
     
     #max_sqr
-    #biophys = CLBacterium(sim, max_cells=max_cells, jitter_z=False, max_sqs=256**2)
     biophys = CLBacterium(sim, max_cells=max_cells, jitter_z=False)
     integ = CLEulerIntegrator(sim, 3, max_cells)
 
@@ -47,7 +46,7 @@ def specRateCL():
     return '''
     const float d = 198.f;
     const float e = 0.f;
-    const float gamma = 1.8f;
+    const float gamma = 0.3f;
     
     float p1 = species[0];
     float p2 = species[1];
